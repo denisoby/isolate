@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/denisoby/isolate/issues"
   },
-  "homepage": "https://github.com/denisoby/isolate#readme"
+  "homepage": "https://github.com/denisoby/isolate#readme",
+  "dependencies": {
+    "@types/node": "^11.11.0",
+    "chrome-remote-interface": "^0.27.1"
+  }
 }
