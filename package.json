@@ -1,0 +1,19 @@
+{
+  "name": "isolate",
+  "version": "0.0.1",
+  "description": "Run, debug and test separate parts of javascript/typescript code",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denisoby/isolate.git"
+  },
+  "author": "Denis Obydennykh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/denisoby/isolate/issues"
+  },
+  "homepage": "https://github.com/denisoby/isolate#readme"
+}
