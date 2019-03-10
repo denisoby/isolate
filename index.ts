@@ -1,25 +1,41 @@
+import {exec} from "child_process";
+
 const CDP = require('chrome-remote-interface');
 
-CDP(async(client) => {
-    debugger;
+async function main() {
+    // git clean -fd && git reset --hard
+    const nodeCommand = 'node ./node_modules/@angular/cli/bin/ng g prettify-schematic:my-schematic';
+    exec(nodeCommand, {
+            cwd: '../test-prettify-schematics'
+        },
+        (error, stdout, stderr) => console.log('Exec: ', error, stdout, stderr));
 
-    const {Debugger, Runtime} = client;
-    try {
-        client.Debugger.paused(() => {
-            console.log('Debugger paused');
-            client.Debugger.resume();
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
+    CDP(async (client) => {
+        debugger;
+
+        const {Debugger, Runtime} = client;
+        try {
+            client.Debugger.paused(() => {
+                console.log('Debugger paused');
+                // client.Debugger.resume();
+                client.close();
+            });
+            console.log('before runIfWaitingForDebugger');
+            await client.Runtime.runIfWaitingForDebugger();
+            console.log('after runIfWaitingForDebugger');
+            await client.Debugger.enable();
+            console.log('after runIfWaitingForDebugger');
+        } catch (err) {
+            console.error(err);
+        } finally {
             client.close();
-        });
-        console.log('before runIfWaitingForDebugger');
-        await client.Runtime.runIfWaitingForDebugger();
-        console.log('after runIfWaitingForDebugger');
-        await client.Debugger.enable();
-        console.log('after debugger enabled');
-    } catch (err) {
+        }
+    }).on('error', (err) => {
         console.error(err);
-    } finally {
-        client.close();
-    }
-}).on('error', (err) => {
-    console.error(err);
-});
+    });
+
+}
+
+main();
