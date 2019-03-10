@@ -66,7 +66,7 @@ const doExec = true;
 
             Debugger.setBreakpointByUrl({
                 lineNumber: 0,
-                urlRegex: 'file-system-engine-host-base'
+                urlRegex: 'base.js'
             }, (...result: any[]) => {
                 console.log(result);
                 debugger;
@@ -89,3 +89,5 @@ main();
 
 
 // angular-cli/packages/angular_devkit/schematics/tools/file-system-engine-host-base.ts
+// angular-cli/packages/angular_devkit/schematics/tools/export-ref.ts
+// angular-cli/packages/angular/cli/commands/generate-impl.ts
