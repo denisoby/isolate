@@ -3,8 +3,7 @@ import {exec} from "child_process";
 const CDP = require('chrome-remote-interface');
 
 async function main() {
-    // git clean -fd && git reset --hard
-    const nodeCommand = 'node ./node_modules/@angular/cli/bin/ng g prettify-schematic:my-schematic';
+    const nodeCommand = 'git clean -fd && git reset --hard && node --inspect-brk=9222 ./node_modules/@angular/cli/bin/ng g prettify-schematic:my-schematic';
     exec(nodeCommand, {
             cwd: '../test-prettify-schematics'
         },
